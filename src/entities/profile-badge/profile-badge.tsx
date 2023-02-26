@@ -1,4 +1,4 @@
-import { ProfilePhoto } from '../profile-photo'
+import { ProfilePhoto } from '../../shared/profile-photo'
 import styles from './profile-badge.module.css'
 
 type Props = {

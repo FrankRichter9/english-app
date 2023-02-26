@@ -1,7 +1,8 @@
 import React from 'react'
 import styles from './main.module.css'
 import { MainLayout } from '~/layouts/main-layout'
-import { ProfileBadge } from '@/shared'
+import { ProfileBadge } from '@/entities'
+import { Dictionary } from '@/widgets'
 
 export class Main extends React.Component {
 	render() {
@@ -14,6 +15,7 @@ export class Main extends React.Component {
 					/>
 					<div className={styles.separator} />
 					<h1>Main</h1>
+					<Dictionary />
 				</div>
 			</MainLayout>
 		)

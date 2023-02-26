@@ -1,0 +1,7 @@
+.root {
+	min-width: 60px;
+	min-height: 40px;
+
+	box-sizing: border-box;
+	padding: 4px 8px;
+}
