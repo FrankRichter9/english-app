@@ -1,14 +1,14 @@
 import { Routes, Route, Link } from 'react-router-dom'
-import { Logo, Menu } from './components'
-import { Login, Main } from './pages'
+import { Dictionary, Login, Main, Words } from './pages'
 
 function App() {
 	return (
 		<div className="App">
-			<Link to="/login">Login</Link>
 			<Routes>
 				<Route path="/" element={<Main />} />
 				<Route path="/login" element={<Login />} />
+				<Route path="/dictionary" element={<Dictionary />} />
+				<Route path="/words" element={<Words />} />
 				{/* <Route path="*" element={<Login />} /> */}
 			</Routes>
 		</div>

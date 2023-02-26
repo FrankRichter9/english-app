@@ -1,0 +1,19 @@
+import { ProfilePhoto } from '../profile-photo'
+import styles from './profile-badge.module.css'
+
+type Props = {
+	title: string
+	email: string
+}
+
+export const ProfileBadge = ({ title, email }: Props) => {
+	return (
+		<div className={styles.root}>
+			<ProfilePhoto />
+			<div>
+				<div className={styles.title}>{title}</div>
+				<div className={styles.email}>{email}</div>
+			</div>
+		</div>
+	)
+}

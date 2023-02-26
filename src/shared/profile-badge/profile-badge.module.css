@@ -1,0 +1,14 @@
+.root {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+}
+
+.title {
+	font-size: 14px;
+}
+
+.email {
+	font-size: 12px;
+	color: #979797;
+}
