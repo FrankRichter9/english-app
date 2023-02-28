@@ -11,7 +11,7 @@ type Props = {
 export const MainMenu = ({ className }: Props) => {
 	const location = useLocation()
 
-	const [menuItemsArr, setMenuItemsArr] = useState<MenuItem[]>([
+	const [menuItemsArr] = useState<MenuItem[]>([
 		{
 			title: 'Main',
 			link: '/',
@@ -29,10 +29,19 @@ export const MainMenu = ({ className }: Props) => {
 		},
 	])
 
+	const [subMenumenuItemsArr] = useState<MenuItem[]>([
+		{
+			title: 'Translator',
+			link: '/translator',
+			active: location.pathname === '/translator',
+		},
+	])
+
 	return (
 		<article className={styles.root}>
 			<Logo />
 			<NavMenu className={styles.menu} items={menuItemsArr} />
+			<NavMenu className={styles.subMenu} items={subMenumenuItemsArr} />
 		</article>
 	)
 }

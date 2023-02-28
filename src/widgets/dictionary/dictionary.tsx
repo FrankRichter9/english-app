@@ -9,7 +9,7 @@ export const Dictionary = () => {
 
 	return (
 		<article>
-			<h3>Test dictionary name</h3>
+			<h4>Test dictionary name</h4>
 			<WordsTable words={test} />
 		</article>
 	)

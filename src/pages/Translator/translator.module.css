@@ -1,0 +1,21 @@
+.page {
+	box-sizing: border-box;
+	padding: 32px;
+}
+
+.inputsBlock {
+	margin-top: 32px;
+
+	display: flex;
+	gap: 16px;
+}
+
+.rootInput {
+	width: 500px;
+
+	margin-top: 8px;
+}
+
+.info {
+	margin-top: 64px;
+}

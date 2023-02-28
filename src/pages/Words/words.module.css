@@ -1,19 +1,13 @@
 .page {
-	display: flex;
-}
-
-.menu {
-	width: 15%;
-	height: 100vh;
-	padding: 0 0 0 24px;
-
 	box-sizing: border-box;
-
-	padding-top: 100px;
-
-	border-right: 1px solid #d9d9d9;
+	padding: 32px;
 }
 
-.main {
-	padding: 32px;
+.addWordBlock {
+	display: flex;
+	gap: 16px;
+}
+
+.addInput {
+	width: 400px;
 }

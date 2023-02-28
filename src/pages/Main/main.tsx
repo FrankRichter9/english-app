@@ -14,7 +14,7 @@ export class Main extends React.Component {
 						email="alisasokolova1989@yandex.ru"
 					/>
 					<div className={styles.separator} />
-					<h1>Main</h1>
+					<h2>Main</h2>
 					<Dictionary />
 				</div>
 			</MainLayout>

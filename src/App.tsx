@@ -1,5 +1,5 @@
 import { Routes, Route, Link } from 'react-router-dom'
-import { Dictionary, Login, Main, Words } from './pages'
+import { Dictionary, Login, Main, Translator, Words } from './pages'
 
 function App() {
 	return (
@@ -9,6 +9,7 @@ function App() {
 				<Route path="/login" element={<Login />} />
 				<Route path="/dictionary" element={<Dictionary />} />
 				<Route path="/words" element={<Words />} />
+				<Route path="/translator" element={<Translator />} />
 				{/* <Route path="*" element={<Login />} /> */}
 			</Routes>
 		</div>

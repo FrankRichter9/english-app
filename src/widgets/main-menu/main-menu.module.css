@@ -9,7 +9,15 @@
 	border-right: 1px solid #d9d9d9;
 }
 
+.menu,
+.subMenu {
+	margin-left: -4px;
+}
+
 .menu {
 	margin-top: 64px;
-	margin-left: -4px;
+}
+
+.subMenu {
+	margin-top: 48px;
 }

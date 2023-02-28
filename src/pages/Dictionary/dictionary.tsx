@@ -6,7 +6,9 @@ export class Dictionary extends React.Component {
 	render() {
 		return (
 			<MainLayout>
-				<h1>Dictionary</h1>
+				<main className={styles.page}>
+					<h2>Dictionary</h2>
+				</main>
 			</MainLayout>
 		)
 	}

@@ -1,0 +1,30 @@
+.root {
+	position: relative;
+	width: fit-content;
+	padding: 4px 8px;
+	height: 32px;
+
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	user-select: none;
+}
+
+.active {
+	background-color: rgb(250, 252, 255);
+	font-weight: 500;
+}
+
+.root:not(.active) {
+	color: rgb(112, 112, 112);
+}
+
+.activeLine {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 3px;
+	border-radius: 1px;
+	background-color: rgb(139, 166, 255);
+}
