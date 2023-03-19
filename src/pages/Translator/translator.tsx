@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 import styles from './translator.module.css'
 import { MainLayout } from '~/layouts/main-layout'
 import { Input, Tab, Tabs } from '@/shared'
@@ -8,8 +9,13 @@ export const Translator = () => {
 	const [firstInputValue, setFirstInputValue] = useState('')
 	const [secondInputValue, setSecondInputValue] = useState('')
 
+	const [ruSynonyms, setRuSynonyms] = useState([])
+	const [enSynonyms, setEnSynonyms] = useState([])
+
 	const [firstInputLang, setFirstInputLang] = useState<Lang>('ru')
-	const [secondInputLang, setSecondInputLang] = useState<Lang>('ru')
+	const [secondInputLang, setSecondInputLang] = useState<Lang>('en')
+
+	const [timeoutID, setTimeoutID] = useState<NodeJS.Timeout>(null)
 
 	const reverseMap: Record<Lang, Lang> = {
 		en: 'ru',
@@ -27,6 +33,67 @@ export const Translator = () => {
 		} else {
 			setFirstInputLang(reverseMap[lang])
 		}
+	}
+
+	const changeInputTranslateHandler = (value: string) => {
+		timeoutID && clearTimeout(timeoutID)
+		setTimeoutID(null)
+		const t = value.trim()
+			? setTimeout(() => {
+					axios
+						.get(
+							`http://localhost:5000/api/translate?text=${value}&lang=${firstInputLang}`
+						)
+						.then(function (response) {
+							const text = response.data.translate
+							setSecondInputValue(text)
+							setRuSynonyms(response.data.synonyms.ru)
+							setEnSynonyms(response.data.synonyms.en)
+						})
+						.catch(function (error) {
+							// handle error
+							console.log(error)
+						})
+						.finally(function () {
+							setTimeoutID(null)
+						})
+			  }, 500)
+			: null
+		setTimeoutID(t)
+
+		if (!value.trim()) {
+			setSecondInputValue('')
+		}
+
+		setFirstInputValue(value)
+	}
+
+	const renderRuSynonyms = () => {
+		return (
+			Boolean(ruSynonyms.length) && (
+				<section className={styles.synonymsBlock}>
+					<ul className={styles.list}>
+						{ruSynonyms.map((arr) => (
+							<li>{arr.join(', ')}</li>
+						))}
+					</ul>
+				</section>
+			)
+		)
+	}
+
+	const renderEnSynonyms = () => {
+		return (
+			Boolean(enSynonyms.length) && (
+				<section className={styles.synonymsBlock}>
+					<ul className={styles.list}>
+						{enSynonyms.map((arr) => (
+							<li>{arr.join(', ')}</li>
+						))}
+					</ul>
+				</section>
+			)
+		)
 	}
 
 	return (
@@ -56,8 +123,11 @@ export const Translator = () => {
 							className={styles.rootInput}
 							placeholder="Введите слово или фразу..."
 							value={firstInputValue}
-							whenChange={setFirstInputValue}
+							whenChange={changeInputTranslateHandler}
 						/>
+						{firstInputLang === 'en'
+							? renderEnSynonyms()
+							: renderRuSynonyms()}
 					</div>
 					<div>
 						<Tabs>
@@ -83,10 +153,13 @@ export const Translator = () => {
 							whenChange={setSecondInputValue}
 							banUserInput
 						/>
+						{firstInputLang === 'ru'
+							? renderEnSynonyms()
+							: renderRuSynonyms()}
 					</div>
 				</article>
 				<article className={styles.info}>
-					<h4>More information</h4>
+					<h4>History</h4>
 					<div>
 						<div>
 							Lorem ipsum dolor sit amet consectetur adipisicing

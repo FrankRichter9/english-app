@@ -1,14 +1,13 @@
 .root {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	width: 32px;
 	height: 32px;
 
 	color: #fff;
-	background-color: rgb(58, 39, 226);
-
-	display: flex;
-	align-items: center;
-	justify-content: center;
-
-	border-radius: 8px;
 	font-weight: 600;
+
+	background-color: rgb(58 39 226);
+	border-radius: 8px;
 }

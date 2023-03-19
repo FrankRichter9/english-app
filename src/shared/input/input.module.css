@@ -1,26 +1,27 @@
 .root {
+	display: flex;
+	align-items: center;
+	box-sizing: border-box;
 	width: 100%;
 	height: 40px;
 	padding: 4px 8px;
-	box-sizing: border-box;
 
-	border: 1px solid rgb(231, 231, 231);
-
-	display: flex;
-	align-items: center;
+	border: 1px solid rgb(231 231 231);
 	border-radius: 4px;
+	cursor: text;
 }
 
 .focused {
-	border: 1px solid rgb(68, 133, 255);
+	border: 1px solid rgb(68 133 255);
 }
 
 .baseInput {
 	width: 100%;
 	margin: 0;
 	padding: 0;
-	border: none;
+
 	background-color: transparent;
+	border: none;
 }
 
 .baseInput:active,
@@ -28,4 +29,8 @@
 .baseInput:focus {
 	border: none;
 	outline: none;
+}
+
+.banUserInput {
+	cursor: default;
 }

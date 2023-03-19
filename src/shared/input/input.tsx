@@ -1,4 +1,4 @@
-import { useState, useRef, ChangeEvent } from 'react'
+import { useState, useRef, ChangeEvent, useEffect } from 'react'
 
 import styles from './input.module.css'
 
@@ -20,6 +20,11 @@ export const Input = ({
 	const input = useRef(null)
 	const [isFocused, setFocused] = useState(false)
 
+	useEffect(() => {
+		console.log('234')
+		input.current.value = value
+	}, [value])
+
 	const inputChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
 		whenChange(e.target.value)
 	}
@@ -37,6 +42,7 @@ export const Input = ({
 				styles.root,
 				className,
 				isFocused && styles.focused,
+				banUserInput && styles.banUserInput,
 			].join(' ')}
 			onClick={inputClickHandler}
 		>

@@ -1,30 +1,35 @@
 .root {
 	position: relative;
-	width: fit-content;
-	padding: 4px 8px;
-	height: 32px;
 
 	display: flex;
 	align-items: center;
+	width: fit-content;
+	height: 32px;
+	padding: 4px 8px;
+
 	cursor: pointer;
+
 	user-select: none;
 }
 
 .active {
-	background-color: rgb(250, 252, 255);
 	font-weight: 500;
+
+	background-color: rgb(250 252 255);
 }
 
 .root:not(.active) {
-	color: rgb(112, 112, 112);
+	color: rgb(112 112 112);
 }
 
 .activeLine {
 	position: absolute;
+	right: 0;
 	bottom: 0;
 	left: 0;
-	right: 0;
+
 	height: 3px;
+
+	background-color: rgb(139 166 255);
 	border-radius: 1px;
-	background-color: rgb(139, 166, 255);
 }
