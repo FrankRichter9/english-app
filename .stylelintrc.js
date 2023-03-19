@@ -22,7 +22,6 @@ module.exports = {
 		'selector-no-vendor-prefix': true,
 		'media-feature-name-no-vendor-prefix': true,
 		'at-rule-no-vendor-prefix': true,
-		indentation: 'tab',
 		/**
 		 * Composes может быть несколько, чтобы была возможность подключать их из разных файлов
 		 * @see https://github.com/css-modules/css-modules#composing-from-other-files
@@ -72,30 +71,6 @@ module.exports = {
 		 * tokens.json в @fe/ods не соответствует и не будет соответствовать дефолтному kebab-case
 		 */
 		'custom-property-pattern': null,
-
-		/**
-		 * NOTE: Правило влияет и на attributes в соответствии с правилом selector-attribute-quotes: 'always'
-		 *
-		 * Согласно спецификации кавычки могут быть одинарными
-		 * https://www.w3.org/TR/CSS2/syndata.html#strings
-		 *
-		 * Отсутствие кавычек плохо согласно статье https://mathiasbynens.be/notes/unquoted-attribute-values
-		 *
-		 * NOTE: Отключаем, так как cssesc используемый под капотом ескейпит кириллицу.
-		 * TODO: оформить issue в stylelint (возможное решение - поменять cssesc на css.escape пакет)
-		 */
-		'string-quotes': null,
-
-		/**
-		 * Ссылки в комментариях могут быть любого размера, поэтому игнорируем комментарии
-		 */
-		'max-line-length': [
-			120,
-			{
-				ignore: 'comments',
-				ignorePattern: ['/composes\\.*/', '/unicode-range\\.*/'],
-			},
-		],
 		'shorthand-property-no-redundant-values': null,
 		'declaration-block-no-redundant-longhand-properties': null,
 
@@ -106,5 +81,6 @@ module.exports = {
 		'selector-id-pattern': [
 			/^([a-z][a-z0-9]*)(-[a-z0-9]+)*$|^__layout$|^__nuxt$/,
 		],
+		'no-descending-specificity': true,
 	},
 }

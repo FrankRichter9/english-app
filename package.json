@@ -6,7 +6,7 @@
 		"start": "node scripts/start.js",
 		"build": "node scripts/build.js",
 		"test": "node scripts/test.js",
-		"stylelint": "stylelint '**/*.css' --fix"
+		"stylelint": "stylelint './src/**/**/*.module.css' --fix"
 	},
 	"dependencies": {
 		"@babel/core": "^7.16.0",
