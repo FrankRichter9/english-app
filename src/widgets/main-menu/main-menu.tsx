@@ -37,11 +37,23 @@ export const MainMenu = ({ className }: Props) => {
 		},
 	])
 
+	const [loginMenumenuItemsArr] = useState<MenuItem[]>([
+		{
+			title: 'Log in',
+			link: '/login',
+			active: location.pathname === '/login',
+		},
+	])
+
 	return (
 		<article className={styles.root}>
 			<Logo />
 			<NavMenu className={styles.menu} items={menuItemsArr} />
 			<NavMenu className={styles.subMenu} items={subMenumenuItemsArr} />
+			<NavMenu
+				className={styles.loginMenu}
+				items={loginMenumenuItemsArr}
+			/>
 		</article>
 	)
 }

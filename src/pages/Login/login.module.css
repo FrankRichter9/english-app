@@ -1,3 +1,26 @@
 .root {
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	height: 100vh;
+
 	color: #000;
+
+	background-color: rgb(226 226 226);
+}
+
+.authForm {
+
+	box-sizing: border-box;
+	width: 500px;
+	height: 300px;
+	padding: 16px 32px;
+
+	background-color: #fff;
+}
+
+.input {
+	margin-bottom: 16px;
 }

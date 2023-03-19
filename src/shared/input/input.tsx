@@ -21,7 +21,6 @@ export const Input = ({
 	const [isFocused, setFocused] = useState(false)
 
 	useEffect(() => {
-		console.log('234')
 		input.current.value = value
 	}, [value])
 

@@ -9,7 +9,8 @@
 }
 
 .menu,
-.subMenu {
+.subMenu,
+.loginMenu {
 	margin-left: -4px;
 }
 
@@ -19,4 +20,8 @@
 
 .subMenu {
 	margin-top: 48px;
+}
+
+.loginMenu {
+	margin-top: 208px;
 }
