@@ -8,10 +8,10 @@ export const AuthAPI = {
     * @returns {Promise<AxiosResponce<any>>}
     * 
     */
-    login(login: string, password: string): Promise<AxiosResponse<any>> {
+    login(email: string, password: string): Promise<AxiosResponse<any>> {
         const url = '/auth/login'
         const data = {
-            username: login,
+            email,
             password
         }
 
@@ -24,8 +24,8 @@ export const AuthAPI = {
     * @returns {Promise<AxiosResponce<any>>}
     * 
     */
-    user(id: number): Promise<AxiosResponse<any>> {
-        const url = '/users/' + id
+    logout(): Promise<AxiosResponse<any>> {
+        const url = '/auth/logout'
 
         return DefaultnAPI.get(url)
     },

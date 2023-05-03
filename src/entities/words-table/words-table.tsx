@@ -20,11 +20,12 @@ export const WordsTable = ({ words } : Props) => {
 		},
 	]
 
-	const renderTableRow = (word) => {
+	const renderTableRow = (word, index) => {
 		const { text, translate, date } = word
+		const key = text + translate + date + index
 
 		return (
-			<div className={[styles.contents, styles.row].join(' ')}>
+			<div key={key} className={[styles.contents, styles.row].join(' ')}>
 				<TableCell>{text}</TableCell>
 				<TableCell>{translate}</TableCell>
 				<TableCell>{date}</TableCell>

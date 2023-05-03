@@ -5,6 +5,7 @@ import styles from './input.module.css'
 type Props = {
 	value: string
 	placeholder?: string
+	type?: string
 	className?: string
 	banUserInput?: boolean
 	whenChange: (value: string) => void
@@ -13,6 +14,7 @@ type Props = {
 export const Input = ({
 	value,
 	placeholder,
+	type,
 	banUserInput = false,
 	className,
 	whenChange,
@@ -48,7 +50,7 @@ export const Input = ({
 			<input
 				className={styles.baseInput}
 				ref={input}
-				type="text"
+				type={type || 'text'}
 				value={value}
 				placeholder={placeholder}
 				disabled={banUserInput}
