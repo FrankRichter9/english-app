@@ -10,8 +10,8 @@ type Props = {
 
 export const Button = ({ children, className, whenClick }: Props) => {
 	return (
-		<div className={[styles.root, className].join(' ')} onClick={whenClick}>
+		<button className={[styles.reset, styles.root, className].join(' ')} onClick={whenClick}>
 			{children}
-		</div>
+		</button>
 	)
 }

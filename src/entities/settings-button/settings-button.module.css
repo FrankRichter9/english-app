@@ -1,0 +1,16 @@
+.root {
+	height: 32px;
+	padding: 0;
+
+	background-color: transparent !important;
+}
+
+.root svg {
+	transition: .3s;
+
+	fill: rgb(159 159 159);
+}
+
+.root svg:hover {
+	fill: rgb(94 94 94);
+}

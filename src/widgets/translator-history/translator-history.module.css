@@ -1,0 +1,27 @@
+.root {
+	box-sizing: border-box;
+	width: 15%;
+	min-width: 200px;
+	height: 100vh;
+	padding: 32px 0 32px 24px;
+
+	border-right: 1px solid #d9d9d9;
+}
+
+.menu,
+.subMenu,
+.loginMenu {
+	margin-left: -4px;
+}
+
+.menu {
+	margin-top: 64px;
+}
+
+.subMenu {
+	margin-top: 48px;
+}
+
+.loginMenu {
+	margin-top: 208px;
+}

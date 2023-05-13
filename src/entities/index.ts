@@ -1,4 +1,5 @@
-export { NavMenu } from './nav-menu'
-export { ProfileBadge } from './profile-badge'
-export { WordsTable } from './words-table'
+export * from './nav-menu'
+export * from './profile-badge'
+export * from './words-table'
+export * from './settings-button'
 export type { MenuItem } from './nav-menu-item'

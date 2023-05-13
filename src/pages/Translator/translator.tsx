@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import styles from './translator.module.css'
 import { MainLayout } from '~/layouts/main-layout'
-import { Input, Tab, Tabs } from '@/shared'
+import { Button, Input, Tab, Tabs } from '@/shared'
 import { Lang } from '@/types'
+import { SettingsButton } from '@/entities'
+import { TranslatorHistory } from '@/widgets/translator-history'
 
 export const Translator = () => {
 	const [firstInputValue, setFirstInputValue] = useState('')
@@ -40,24 +42,24 @@ export const Translator = () => {
 		setTimeoutID(null)
 		const t = value.trim()
 			? setTimeout(() => {
-					axios
-						.get(
-							`http://localhost:5000/api/translate?text=${value}&lang=${firstInputLang}`
-						)
-						.then(function (response) {
-							const text = response.data.translate
-							setSecondInputValue(text)
-							setRuSynonyms(response.data.synonyms.ru)
-							setEnSynonyms(response.data.synonyms.en)
-						})
-						.catch(function (error) {
-							// handle error
-							console.log(error)
-						})
-						.finally(function () {
-							setTimeoutID(null)
-						})
-			  }, 500)
+				axios
+					.get(
+						`http://localhost:5000/api/translate?text=${value}&lang=${firstInputLang}`
+					)
+					.then(function (response) {
+						const text = response.data.translate
+						setSecondInputValue(text)
+						setRuSynonyms(response.data.synonyms.ru)
+						setEnSynonyms(response.data.synonyms.en)
+					})
+					.catch(function (error) {
+						// handle error
+						console.log(error)
+					})
+					.finally(function () {
+						setTimeoutID(null)
+					})
+			}, 500)
 			: null
 		setTimeoutID(t)
 
@@ -99,7 +101,10 @@ export const Translator = () => {
 	return (
 		<MainLayout>
 			<main className={styles.page}>
-				<h2>Translator</h2>
+				<header className={styles.header}>
+					<h2>Translator</h2>
+					<SettingsButton />
+				</header>
 
 				<article className={styles.inputsBlock}>
 					<div>
@@ -125,6 +130,12 @@ export const Translator = () => {
 							value={firstInputValue}
 							whenChange={changeInputTranslateHandler}
 						/>
+						<Button
+							className={styles.addButton}
+							whenClick={() => null}
+						>
+							Add word to dictionary
+						</Button>
 						{firstInputLang === 'en'
 							? renderEnSynonyms()
 							: renderRuSynonyms()}
@@ -161,25 +172,7 @@ export const Translator = () => {
 				<article className={styles.info}>
 					<h4>History</h4>
 					<div>
-						<div>
-							Lorem ipsum dolor sit amet consectetur adipisicing
-							elit. Sunt quod corporis nihil magnam labore magni
-							eum error molestias. Omnis facilis laudantium dolore
-							voluptates odio ad, veritatis autem illo iure saepe?
-							Lorem ipsum dolor, sit amet consectetur adipisicing
-							elit. Ex rerum laboriosam obcaecati nihil optio quo,
-							enim minus nisi quisquam veniam repudiandae dolor,
-							doloremque molestias necessitatibus voluptatum quasi
-							saepe temporibus ullam!
-						</div>
-						<h4>Synonyms</h4>
-						<ul>
-							<li>ipsum</li>
-							<li>laboriosam</li>
-							<li>odio</li>
-							<li>voluptatum</li>
-							<li>necessitatibus</li>
-						</ul>
+						<TranslatorHistory />
 					</div>
 				</article>
 			</main>

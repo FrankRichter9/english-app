@@ -1,0 +1,26 @@
+.contents {
+	display: contents;
+}
+
+.row {
+	transition: 0.3s;
+}
+
+.row:hover div {
+	background-color: rgb(251 251 251);
+}
+
+.actionCell * {
+	display: none;
+}
+
+.actionCell {
+	display: flex;
+
+	gap: 8px;
+	align-items: center;
+}
+
+.row:hover  .actionCell * {
+	display: block;
+}

@@ -34,3 +34,24 @@
 .banUserInput {
 	cursor: default;
 }
+
+.clearIcon {
+	cursor: pointer;
+	opacity: 0.3;
+
+	transition: .3s;
+
+	fill: rgb(141 141 141);
+	stroke: rgb(141 141 141);
+}
+
+.banUserInput .clearIcon {
+	display: none;
+}
+
+.clearIcon:hover,
+.baseInput:active + .clearIcon,
+.baseInput:focus-visible + .clearIcon,
+.baseInput:focus + .clearIcon {
+	opacity: 1;
+}
