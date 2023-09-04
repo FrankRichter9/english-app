@@ -1,12 +1,20 @@
 import { MainLayout } from '@/layouts/main-layout'
 import { Input } from '@/shared'
 import { Dictionary } from '@/widgets'
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './words.module.css'
+import { WordsAPI } from '@/api/services/words-controller'
 
-export class Words extends React.Component {
-	render() {
-		return (
+export const Words = () => {
+
+	useEffect(() => {
+		console.log('setWord')
+		WordsAPI.setWord({
+			name: 'Sasha'
+		})
+	}, [])
+
+	return (
 			<MainLayout>
 				<main className={styles.page}>
 					<h2>Words</h2>
@@ -27,6 +35,5 @@ export class Words extends React.Component {
 					<Dictionary />
 				</main>
 			</MainLayout>
-		)
-	}
+	)
 }

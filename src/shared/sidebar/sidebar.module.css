@@ -1,0 +1,65 @@
+.backdrop {
+	--root-width: 600px;
+	--animation-duration: 450ms;
+
+	width: 100vw;
+	height: 100vh;
+
+	background-color: var(--backdrop-color);
+
+	display: flex;
+	justify-content: flex-end;
+
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: var(--modal-backdrop-z-index);
+
+	overflow: hidden;
+}
+
+.root {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: var(--root-width);
+	height: 100vh;
+	background-color: var(--white);
+
+	box-shadow: -14px 0px 37px 20px rgba(34, 60, 80, 0.14);
+}
+
+.animationEnter {
+	opacity: 0;
+}
+.animationEnterActive{
+	opacity: 1;
+	transition: opacity var(--animation-duration);
+}
+.animationExit {
+  	opacity: 1;
+}
+.animationExitActive {
+	opacity: 0;
+	transition: opacity var(--animation-duration);
+}
+
+.animationEnter .root {
+	opacity: 0;
+	transform: translateX(var(--root-width));
+}
+.animationEnterActive .root {
+	opacity: 1;
+	transform: translateX(0);
+	transition: opacity var(--animation-duration), transform var(--animation-duration);
+}
+.animationExit .root {
+  	opacity: 1;
+}
+.animationExitActive .root {
+	opacity: 0;
+	transform: translateX(var(--root-width));
+	transition: opacity var(--animation-duration), transform var(--animation-duration);
+}

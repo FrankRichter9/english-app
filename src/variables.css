@@ -1,0 +1,7 @@
+body {
+    --modal-backdrop-z-index: 9999;
+
+    --backdrop-color: #00000080;
+
+    --white: #fff;
+}
