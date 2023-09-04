@@ -11,5 +11,8 @@
 	"stylelint.validate": ["css", "scss"],
 	"editor.codeActionsOnSave": {
 		"source.fixAll.stylelint": true
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "vscode.typescript-language-features"
 	}
 }

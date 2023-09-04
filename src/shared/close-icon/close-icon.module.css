@@ -1,0 +1,9 @@
+.root {
+	cursor: pointer;
+	fill: #757575;
+	transition: .3s;
+}
+
+.root:hover {
+	fill: #000;
+}

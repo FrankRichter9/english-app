@@ -1,9 +1,9 @@
 import React, { MouseEvent, ReactNode, useRef } from 'react'
 import { CSSTransition } from 'react-transition-group';
 
-import styles from './sidebar.module.css'
+import styles from './sidebar-base.module.css'
 
-type Props = {
+export type Props = {
 	show: boolean
 	children?: ReactNode
 	whenClose: () => void
@@ -26,7 +26,7 @@ const animationStyles = () => ({
     },
 })
 
-export const Sidebar = ({ show, whenClose, children }: Props) => {
+export const SidebarBase = ({ show, whenClose, children }: Props) => {
 	const nodeRef = useRef(null);
 	const rootClickHandler = (e: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
 		e.stopPropagation()
@@ -49,7 +49,7 @@ export const Sidebar = ({ show, whenClose, children }: Props) => {
 		>
 			<div ref={nodeRef} className={styles.backdrop} onClick={whenClose}>
 				<div className={styles.root} onClick={rootClickHandler}>
-					<h1>test</h1>
+					{children}
 				</div>
 			</div>
 		</CSSTransition>
