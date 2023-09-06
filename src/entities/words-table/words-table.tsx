@@ -6,7 +6,7 @@ type Props = {
 	words: Word[]
 }
 
-export const WordsTable = ({ words } : Props) => {
+export const WordsTable = ({ words }: Props) => {
 	const config: TableColumn[] = [
 		{
 			title: 'word',
@@ -21,7 +21,7 @@ export const WordsTable = ({ words } : Props) => {
 	]
 
 	const renderTableRow = (word, index) => {
-		const { text, translate, date } = word
+		const { word: text, translate, date } = word
 		const key = text + translate + date + index
 
 		return (

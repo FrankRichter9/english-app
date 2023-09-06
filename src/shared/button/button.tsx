@@ -5,12 +5,16 @@ import styles from './button.module.css'
 type Props = {
 	children: ReactNode
 	className?: string
-	whenClick: () => void
+	whenClick?: () => void
 }
 
 export const Button = ({ children, className, whenClick }: Props) => {
 	return (
-		<button className={[styles.reset, styles.root, className].join(' ')} onClick={whenClick}>
+		<button
+			className={[styles.reset, styles.root, className].join(' ')}
+			type='submit'
+			onClick={whenClick}
+		>
 			{children}
 		</button>
 	)

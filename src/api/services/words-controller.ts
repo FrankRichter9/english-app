@@ -13,4 +13,16 @@ export const WordsAPI = {
 
 		return DefaultnAPI.post(url, word)
 	},
+
+	/*
+	 * @param {string} login
+	 * @param {string} password
+	 * @returns {Promise<AxiosResponce<any>>}
+	 *
+	 */
+	getWords(): Promise<AxiosResponse<any>> {
+		const url = '/api/words'
+
+		return DefaultnAPI.get(url)
+	},
 }

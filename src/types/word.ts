@@ -1,5 +1,5 @@
 export type Word = {
-	text: string
+	word: string
 	translate: string
 	date: string
 }

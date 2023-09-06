@@ -1,16 +1,20 @@
+import { WordsAPI } from '@/api/services/words-controller'
 import { WordsTable } from '@/entities'
+import { useEffect, useState } from 'react'
 
 export const Dictionary = () => {
-	const test = new Array(10).fill({
-		text: 'test',
-		translate: 'тест',
-		date: '12.08.2000',
-	})
+	const [words, setWords] = useState([])
+
+	useEffect(() => {
+		const words = WordsAPI.getWords().then((data) => {
+			setWords(data.data)
+		})
+	}, [])
 
 	return (
 		<article>
-			<h4>Test dictionary name</h4>
-			<WordsTable words={test} />
+			<h4>All words</h4>
+			<WordsTable words={words} />
 		</article>
 	)
 }

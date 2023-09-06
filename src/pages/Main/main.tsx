@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './main.module.css'
 import { MainLayout } from '~/layouts/main-layout'
 import { ProfileBadge } from '@/entities'
 import { Dictionary } from '@/widgets'
 import { Button } from '@/shared'
 import { Sidebar } from '@/entities/sidebar'
+import { AddWordForm } from '@/widgets/add-word-form'
+import { WordsAPI } from '@/api/services/words-controller'
 
 export const Main = () => {
 	const [addWordSidebarIsShown, showAddWordSidebar] = useState(false);
@@ -30,7 +32,9 @@ export const Main = () => {
 
 					title="Add word"
 				>
-					<span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam inventore eum accusamus natus repellendus perferendis quae sapiente ea, in amet nostrum veritatis illo assumenda minima, illum tempora optio officia aut!</span>
+					<AddWordForm
+						whenAddWord={() => showAddWordSidebar(false)}
+					/>
 				</Sidebar>
 			</div>
 		</MainLayout>
