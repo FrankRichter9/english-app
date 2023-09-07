@@ -5,7 +5,8 @@
 	height: 100vh;
 	padding: 32px 0 32px 24px;
 
-	border-right: 1px solid #d9d9d9;
+	transition: .3s;
+	border-right: 1px solid var(--gray-border);
 }
 
 .menu,

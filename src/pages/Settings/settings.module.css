@@ -1,0 +1,9 @@
+.page {
+	box-sizing: border-box;
+	padding: 32px;
+}
+
+.buttonsBlock {
+	display: flex;
+	gap: 8px;
+}

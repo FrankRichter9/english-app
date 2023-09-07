@@ -1,7 +1,36 @@
-body {
+html {
     --modal-backdrop-z-index: 9999;
 
     --backdrop-color: #00000080;
 
     --white: #fff;
+    --black: #000;
+}
+
+html[data-theme='light'] {
+    --main-background-color: var(--white);
+    --main-color: var(--black);
+
+    --dark-hover: #f5f5f5;
+
+    --gray-border: #d9d9d9;
+}
+
+html[data-theme='dark'] {
+    --main-background-color: #323232;
+    --main-color: var(--white);
+
+    --dark-hover: #272727;
+
+    --gray-border: #4f4f4f;
+}
+
+#page {
+    background-color: var(--main-background-color);
+    color: var(--main-color);
+
+    transition: 
+        background-color .3s ease-in,
+        color .1s ease-in,
+        border-right .3s ease-in;
 }

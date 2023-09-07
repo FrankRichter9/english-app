@@ -1,25 +1,36 @@
-import React, { createContext } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import './variables.css'
 import App from './App'
-import Store from '~/store/store'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
 
-const store = new Store()
-export const Context = createContext({
-	store
-})
+const defaultState = {
+	words: []
+}
+
+const reducer = (state = defaultState, action) => {
+	switch(action.type) {
+		case 'ADD_WORDS':
+			return {...state, words: action.payload}
+
+		default:
+			return state
+	}
+}
+
+const store = createStore(reducer)
+
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
 root.render(
 	<React.StrictMode>
-		<BrowserRouter>
-			<Context.Provider value={{
-				store
-			}} >
+			<Provider store={store}>
+			<BrowserRouter>
 				<App />
-			</Context.Provider>
-		</BrowserRouter>
+			</BrowserRouter>
+		</Provider>
 	</React.StrictMode>
 )

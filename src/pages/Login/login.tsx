@@ -2,17 +2,14 @@ import { LoginAPI } from '@/api'
 import { Button, Input } from '@/shared'
 import React, { useContext, useState } from 'react'
 import styles from './login.module.css'
-import { Context } from '../../index'
 
 export const Login = () => {
 
 	const [email, setEmail] = useState<string>('')
 	const [password, setPassword] = useState<string>('')
-	//@ts-expect-error
-	const { store } = useContext(Context)
 
 	const login = () => {
-		store.login(email, password)
+		// store.login(email, password)
 	}
 
 	return (

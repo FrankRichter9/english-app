@@ -6,7 +6,7 @@
 	height: 40px;
 	padding: 4px 8px;
 
-	border: 1px solid rgb(231 231 231);
+	border: 1px solid var(--gray-border);
 	border-radius: 4px;
 	cursor: text;
 }
@@ -22,6 +22,8 @@
 
 	background-color: transparent;
 	border: none;
+
+	color: var(--main-color);
 }
 
 .baseInput:active,

@@ -2,10 +2,10 @@
 	display: contents;
 }
 
-.row {
+.row div {
 	transition: 0.3s;
 }
 
 .row:hover div {
-	background-color: rgb(251 251 251);
+	background-color: var(--dark-hover);
 }

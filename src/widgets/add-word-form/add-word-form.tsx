@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import styles from './add-word-form.module.css'
 import { WordsAPI } from '@/api/services/words-controller'
+import { useDispatch } from 'react-redux'
 
 type Props = {
 	className?: string
@@ -16,6 +17,7 @@ type AddWordForm = {
 }
 
 export const AddWordForm = ({ className, whenAddWord }: Props) => {
+	const dispatch = useDispatch()
 	const { handleSubmit, control } = useForm<AddWordForm>({
 		defaultValues: {
 			word: '',
@@ -23,8 +25,16 @@ export const AddWordForm = ({ className, whenAddWord }: Props) => {
 		}
 	});
 
-	const onSubmit = data => {
-		WordsAPI.setWord(data)
+	const onSubmit = async (data) => {
+		await WordsAPI.setWord(data)
+		WordsAPI.getWords().then((data) => {
+			dispatch(
+				{
+					type: 'ADD_WORDS',
+					payload: data.data
+				}
+			)
+		})
 		whenAddWord?.()
 	};
 
