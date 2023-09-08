@@ -1,6 +1,7 @@
 import { Button, Table, TableCell } from '@/shared'
 import { Word } from '@/types'
 import styles from './history-table.module.css'
+import clsx from 'clsx'
 
 type Props = {
 	words: Word[]
@@ -33,7 +34,7 @@ export const HistoryTable = ({ words }: Props) => {
 		const key = text + translate + date + index
 
 		return (
-			<div key={key} className={[styles.contents, styles.row].join(' ')}>
+			<div key={key} className={clsx(styles.contents, styles.row)}>
 				<TableCell>
 					<input type={'checkbox'} />
 				</TableCell>

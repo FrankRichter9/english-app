@@ -1,12 +1,14 @@
 import { ReactNode } from 'react'
 import styles from './table.module.css'
+import clsx from 'clsx'
 
 type Props = {
 	config: TableColumn[]
 	children: ReactNode
+	className?: string
 }
 
-export const Table = ({ config, children }: Props) => {
+export const Table = ({ config, children, className }: Props) => {
 	const gridTemplateColumnsString = config.reduce<string>((acc, column) => {
 		const width = column.width || '1fr'
 
@@ -15,7 +17,7 @@ export const Table = ({ config, children }: Props) => {
 
 	return (
 		<div
-			className={styles.root}
+			className={clsx(styles.root, className)}
 			style={{
 				gridTemplateColumns: gridTemplateColumnsString,
 			}}

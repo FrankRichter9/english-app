@@ -1,0 +1,9 @@
+.table {
+	overflow: auto;
+
+	height: calc(100vh - 320px);
+}
+
+.table::-webkit-scrollbar {
+  display: none;
+}

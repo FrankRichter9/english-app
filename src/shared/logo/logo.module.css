@@ -9,6 +9,6 @@
 	color: #fff;
 	font-weight: 600;
 
-	background-color: rgb(58 39 226);
+	background-color: var(--blue);
 	border-radius: 8px;
 }

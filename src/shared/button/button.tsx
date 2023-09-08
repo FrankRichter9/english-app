@@ -1,4 +1,5 @@
 import { useState, useRef, ChangeEvent, useEffect, ReactNode } from 'react'
+import clsx from 'clsx'
 
 import styles from './button.module.css'
 
@@ -11,7 +12,7 @@ type Props = {
 export const Button = ({ children, className, whenClick }: Props) => {
 	return (
 		<button
-			className={[styles.reset, styles.root, className].join(' ')}
+			className={clsx(styles.reset, styles.root, className)}
 			type='submit'
 			onClick={whenClick}
 		>

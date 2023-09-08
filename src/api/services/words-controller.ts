@@ -25,4 +25,20 @@ export const WordsAPI = {
 
 		return DefaultnAPI.get(url)
 	},
+
+	/*
+	 * @param {string} login
+	 * @param {string} password
+	 * @returns {Promise<AxiosResponce<any>>}
+	 *
+	 */
+	deleteWord(id: number): Promise<AxiosResponse<any>> {
+		const url = '/api/word'
+
+		return DefaultnAPI.delete(url, {
+			data: {
+				id
+			}
+		})
+	},
 }

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import styles from './nav-menu-item.module.css'
+import clsx from 'clsx'
 
 interface Props {
 	title: string
@@ -12,7 +13,7 @@ export const NavMenuItem = (props: Props) => {
 
 	return (
 		<Link
-			className={[styles.root, active && styles.active].join(' ')}
+			className={clsx(styles.root, active && styles.active)}
 			to={link}
 		>
 			<div className={styles.title}>{title}</div>

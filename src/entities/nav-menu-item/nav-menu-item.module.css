@@ -17,7 +17,7 @@
 }
 
 .active {
-	color: #3761ee;
+	color: var(--blue);
 }
 
 .title:hover {
@@ -32,6 +32,6 @@
 
 	width: 5px;
 
-	background-color: #3761ee;
+	background-color: var(--blue);
 	border-radius: 4px 0 0 4px;
 }

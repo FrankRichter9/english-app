@@ -1,4 +1,6 @@
 import { ReactNode } from 'react'
+import clsx from 'clsx'
+
 import styles from './table-cell.module.css'
 
 type Props = {
@@ -7,5 +9,5 @@ type Props = {
 }
 
 export const TableCell = ({ children, className }: Props) => {
-	return <div className={[styles.root, className].join(' ')}>{children}</div>
+	return <div className={clsx(styles.root, className)}>{children}</div>
 }

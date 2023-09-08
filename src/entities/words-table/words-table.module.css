@@ -9,3 +9,14 @@
 .row:hover div {
 	background-color: var(--dark-hover);
 }
+
+.deleteCell {
+	transition: 0;
+	opacity: 0;
+	user-select: none;
+}
+
+.row:hover .deleteCell {
+	opacity: 1;
+	user-select: all;
+}
