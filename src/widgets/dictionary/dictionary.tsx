@@ -33,7 +33,6 @@ export const Dictionary = () => {
 	}
 
 	const changePageHandler = async (newPage: number) => {
-		console.log(newPage)
 		setPage(newPage)
 
 		updateWordsRequest(newPage)
