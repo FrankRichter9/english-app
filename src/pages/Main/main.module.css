@@ -5,7 +5,18 @@
 
 .separator {
 	height: 1px;
-	margin: 32px 0;
+	margin: 24px 0;
 
 	background-color: var(--gray-border);
+}
+
+.pageHeader {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.title {
+	padding: 0;
+	margin: 0;
 }

@@ -1,0 +1,30 @@
+.root {
+	display: flex;
+	gap: 8px;
+}
+
+.pageBlock {
+	user-select: none;
+	box-sizing: border-box;
+
+	width: 30px;
+	height: 30px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	cursor: pointer;
+	border-radius: 2px;
+
+	transition: .3s;
+}
+
+.pageBlock:hover {
+	background-color: var(--dark-hover);
+}
+
+.active {
+	font-weight: 600;
+	border: 1px solid var(--blue);
+}

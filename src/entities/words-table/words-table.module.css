@@ -2,6 +2,9 @@
 	display: contents;
 }
 
+.row {
+	height: 40px;
+}
 .row div {
 	transition: 0.3s;
 }

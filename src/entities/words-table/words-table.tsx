@@ -14,13 +14,15 @@ export const WordsTable = ({ words, className, whenWordDelete }: Props) => {
 	const config: TableColumn[] = [
 		{
 			title: 'word',
-			width: '200px',
+			width: '250px',
 		},
 		{
 			title: 'translate',
+			width: '250px',
 		},
 		...(whenWordDelete ? [{
-			title: 'date',
+			title: 'deleteAction',
+			width: '30px',
 		}] : []),
 	]
 

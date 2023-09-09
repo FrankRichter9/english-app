@@ -1,3 +1,4 @@
 .root {
 	display: grid;
+	grid-template-rows: repeat(50, fit-content(40px));
 }

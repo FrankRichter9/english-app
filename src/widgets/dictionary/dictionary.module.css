@@ -7,3 +7,7 @@
 .table::-webkit-scrollbar {
   display: none;
 }
+
+.pagination {
+	margin-top: 16px;
+}

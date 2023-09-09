@@ -20,8 +20,8 @@ export const WordsAPI = {
 	 * @returns {Promise<AxiosResponce<any>>}
 	 *
 	 */
-	getWords(): Promise<AxiosResponse<any>> {
-		const url = '/api/words'
+	getWords(limit = 20, page = 1): Promise<AxiosResponse<any>> {
+		const url = `/api/words?limit=${limit}&page=${page}`
 
 		return DefaultnAPI.get(url)
 	},

@@ -19,13 +19,17 @@ export const Main = () => {
 					email="alisasokolova1989@yandex.ru"
 				/>
 				<div className={styles.separator} />
-				<h2>Main</h2>
+				<header className={styles.pageHeader}>
+					<h2 className={styles.title}>Main</h2>
+					<Button
+						whenClick={() => showAddWordSidebar(true)}
+					>
+						Add word
+					</Button>
+				</header>
+
 				<Dictionary />
-				<Button
-					whenClick={() => showAddWordSidebar(true)}
-				>
-					Add word
-				</Button>
+
 				<Sidebar
 					show={addWordSidebarIsShown}
 					whenClose={() => showAddWordSidebar(false)}

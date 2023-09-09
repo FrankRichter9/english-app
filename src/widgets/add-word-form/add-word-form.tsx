@@ -28,8 +28,8 @@ export const AddWordForm = ({ className, whenAddWord }: Props) => {
 
 	const onSubmit = async (data) => {
 		await WordsAPI.setWord(data)
-		WordsAPI.getWords().then((data) => {
-			dispatch(updateWords(data.data))
+		WordsAPI.getWords(15, 1).then((data) => {
+			dispatch(updateWords(data.data.words))
 		})
 		whenAddWord?.()
 	};

@@ -2,6 +2,7 @@
 	box-sizing: border-box;
 	min-width: 60px;
 	min-height: 40px;
+	height: 40px;
 	padding: 4px 8px;
 
 	display: flex;
