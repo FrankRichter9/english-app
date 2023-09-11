@@ -27,6 +27,18 @@ export const AuthAPI = {
     logout(): Promise<AxiosResponse<any>> {
         const url = '/auth/logout'
 
+    
+        return LoginAPI.get(url)
+    },
+    /*
+    * @param {string} login
+    * @param {string} password
+    * @returns {Promise<AxiosResponce<any>>}
+    * 
+    */
+    refresh(): Promise<AxiosResponse<any>> {
+        const url = '/auth/refresh'
+
         return DefaultnAPI.get(url)
     },
 }

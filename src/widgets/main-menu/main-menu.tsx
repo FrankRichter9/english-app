@@ -3,6 +3,10 @@ import { Logo } from '@/shared'
 import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import styles from './main-menu.module.css'
+import { AuthAPI } from '@/api/services/auth-controller'
+import { useDispatch } from 'react-redux'
+import { updateUser } from '@/store/actions/users'
+import clsx from 'clsx'
 
 type Props = {
 	className?: string
@@ -10,6 +14,7 @@ type Props = {
 
 export const MainMenu = ({ className }: Props) => {
 	const location = useLocation()
+	const dispatch = useDispatch()
 
 	const [menuItemsArr] = useState<MenuItem[]>([
 		{
@@ -47,22 +52,32 @@ export const MainMenu = ({ className }: Props) => {
 
 	const [loginMenuItemsArr] = useState<MenuItem[]>([
 		{
-			title: 'Log in',
+			title: 'Log out',
 			link: '/login',
 			active: location.pathname === '/login',
 		},
 	])
 
+	const logoutHandler = async () => {
+		const { data } = await AuthAPI.logout()
+
+		if (data) {
+			dispatch(updateUser(null))
+		}
+	}
+
 	return (
-		<article className={styles.root}>
+		<article className={clsx(styles.root, className)}>
 			<Logo />
 			<NavMenu className={styles.menu} items={menuItemsArr} />
 			<NavMenu className={styles.subMenu} items={subMenuItemsArr} />
 			<NavMenu className={styles.subMenu} items={settingsMenuItemsArr} />
-			<NavMenu
-				className={styles.loginMenu}
-				items={loginMenuItemsArr}
-			/>
+			<div onClick={logoutHandler}>
+				<NavMenu
+					className={styles.loginMenu}
+					items={loginMenuItemsArr}
+				/>
+			</div>
 		</article>
 	)
 }

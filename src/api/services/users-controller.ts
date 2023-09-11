@@ -13,4 +13,16 @@ export const UsersAPI = {
 
 		return DefaultnAPI.get(url)
 	},
+
+	/*
+	 * @param {string} login
+	 * @param {string} password
+	 * @returns {Promise<AxiosResponce<any>>}
+	 *
+	 */
+	getMe(): Promise<AxiosResponse<any>> {
+		const url = '/auth/me'
+
+		return DefaultnAPI.get(url)
+	},
 }

@@ -9,6 +9,7 @@ import styles from './dictionary.module.css'
 export const Dictionary = () => {
 	const [countPages, setCountPages] = useState(0)
 	const [page, setPage] = useState(1)
+	const [selectedWordsMap, setSelectedWordsMap] = useState({})
 
 	const dispatch = useDispatch()
 	//@ts-ignore
@@ -32,6 +33,13 @@ export const Dictionary = () => {
 		await updateWordsRequest()
 	}
 
+	const selectWordHandler = (id: number) => {
+		setSelectedWordsMap({
+			...selectedWordsMap,
+			[id]: !selectedWordsMap[id],
+		})
+	}
+
 	const changePageHandler = async (newPage: number) => {
 		setPage(newPage)
 
@@ -44,7 +52,9 @@ export const Dictionary = () => {
 			<WordsTable
 				className={styles.table}
 				words={[...words]}
+				selectedWordsMap={selectedWordsMap}
 				whenWordDelete={deleteWordHandler}
+				whenWordSelect={selectWordHandler}
 			/>
 			<Pagination
 				className={styles.pagination}

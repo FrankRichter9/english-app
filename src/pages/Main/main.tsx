@@ -7,6 +7,7 @@ import { Button } from '@/shared'
 import { Sidebar } from '@/entities/sidebar'
 import { AddWordForm } from '@/widgets/add-word-form'
 import { WordsAPI } from '@/api/services/words-controller'
+import { UserBadge } from '@/widgets/user-badge'
 
 export const Main = () => {
 	const [addWordSidebarIsShown, showAddWordSidebar] = useState(false);
@@ -14,10 +15,7 @@ export const Main = () => {
 	return (
 		<MainLayout>
 			<div className={styles.page}>
-				<ProfileBadge
-					title="Alisa sokolova"
-					email="alisasokolova1989@yandex.ru"
-				/>
+				<UserBadge />
 				<div className={styles.separator} />
 				<header className={styles.pageHeader}>
 					<h2 className={styles.title}>Main</h2>

@@ -1,9 +1,31 @@
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, Link, useNavigate } from 'react-router-dom'
 import { Dictionary, Login, Main, Translator, Words, Settings } from './pages'
 import { useTheme } from './hooks/useTheme'
+import { useEffect } from 'react'
+import { UsersAPI } from './api/services/users-controller'
+import { useDispatch } from 'react-redux'
+import { updateUser } from './store/actions/users'
 
 function App() {
+	const dispatch = useDispatch()
+
 	useTheme()
+
+	const navigate = useNavigate()
+
+	useEffect(() => {
+		const getUser = async () => {
+			try {
+				const data = await UsersAPI.getMe()
+
+				dispatch(updateUser(data.data))
+			} catch {
+				navigate('/login')
+			}
+		}
+
+		getUser()
+	}, [])
 
 	return (
 		<div className="App">
