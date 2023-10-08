@@ -4,7 +4,7 @@ import { AuthAPI } from './services/auth-controller'
 
 const baseURL = 'http://localhost:5000/'
 // process.env.BASE_URL
-const TOKEN_LOCALSTORAGE_KEY = 'token'
+export const TOKEN_LOCALSTORAGE_KEY = 'token'
 
 const loginConfig = {
 	baseURL,
@@ -45,6 +45,6 @@ DefaultnAPI.interceptors.response.use(response => {
 		
 		localStorage.setItem(TOKEN_LOCALSTORAGE_KEY, data.data.accessToken)
 
-		LoginAPI.request(originalRequest)
+		DefaultnAPI.request(originalRequest)
 	}
 })

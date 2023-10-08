@@ -14,7 +14,11 @@
 }
 
 .row.selected div {
-	background-color: #537df99d;
+	background-color: #537cf91f;
+}
+
+.row.selected:hover div {
+	background-color: #537cf968;
 }
 
 .deleteCell {

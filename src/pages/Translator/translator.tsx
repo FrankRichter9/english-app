@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import axios from 'axios'
 import styles from './translator.module.css'
 import { MainLayout } from '~/layouts/main-layout'
 import { Button, Input, Tab, Tabs } from '@/shared'
 import { Lang } from '@/types'
 import { SettingsButton } from '@/entities'
 import { TranslatorHistory } from '@/widgets/translator-history'
+import { TranslateAPI } from '@/api/services/translate-controller'
 
 export const Translator = () => {
 	const [firstInputValue, setFirstInputValue] = useState('')
@@ -42,10 +42,7 @@ export const Translator = () => {
 		setTimeoutID(null)
 		const t = value.trim()
 			? setTimeout(() => {
-				axios
-					.get(
-						`http://localhost:5000/api/translate?text=${value}&lang=${firstInputLang}`
-					)
+				TranslateAPI.translate(value, firstInputLang)
 					.then(function (response) {
 						const text = response.data.translate
 						setSecondInputValue(text)
@@ -53,7 +50,6 @@ export const Translator = () => {
 						setEnSynonyms(response.data.synonyms.en)
 					})
 					.catch(function (error) {
-						// handle error
 						console.log(error)
 					})
 					.finally(function () {
@@ -103,7 +99,6 @@ export const Translator = () => {
 			<main className={styles.page}>
 				<header className={styles.header}>
 					<h2>Translator</h2>
-					<SettingsButton />
 				</header>
 
 				<article className={styles.inputsBlock}>

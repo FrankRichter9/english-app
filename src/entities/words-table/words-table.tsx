@@ -17,7 +17,7 @@ export const WordsTable = ({ words, selectedWordsMap = {}, className, whenWordDe
 	const config: TableColumn[] = [
 		{
 			title: 'checkbox',
-			width: '50px',
+			width: '60px',
 		},
 		{
 			title: 'word',
