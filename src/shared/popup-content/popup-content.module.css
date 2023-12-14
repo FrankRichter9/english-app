@@ -1,0 +1,16 @@
+.root {
+	padding: 24px;
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	padding-bottom: 32px;
+}
+
+.title {
+	margin: 0;
+	padding: 0;
+}

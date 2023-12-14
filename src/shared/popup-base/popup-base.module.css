@@ -1,0 +1,83 @@
+.backdrop {
+	--root-width: 600px;
+	--animation-duration: 450ms;
+
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: var(--modal-backdrop-z-index);
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 100vw;
+	height: 100vh;
+
+	overflow: hidden;
+
+	background-color: var(--backdrop-color);
+}
+
+.backdrop.top {
+	align-items: flex-start;
+}
+
+.root {
+	width: var(--root-width);
+	height: fit-content;
+
+	background-color: var(--main-background-color);
+
+	box-shadow: -14px 0 37px 20px rgb(34 60 80 / 14%);
+}
+
+.animationEnter {
+	opacity: 0;
+}
+
+.animationEnterActive{
+	opacity: 1;
+
+	transition: opacity var(--animation-duration);
+}
+
+.animationExit {
+  	opacity: 1;
+}
+
+.animationExitActive {
+	opacity: 0;
+
+	transition: opacity var(--animation-duration);
+}
+
+.animationEnter .root {
+	transform: translateY(calc(-1 * var(--root-width)));
+	opacity: 0;
+}
+
+.animationEnterActive .root {
+	transform: translateY(0);
+	opacity: 1;
+
+	transition: opacity var(--animation-duration), transform var(--animation-duration);
+}
+
+.animationExit .root {
+  	opacity: 1;
+}
+
+.animationExitActive .root {
+	transform: translateY(calc(-1 * var(--root-width)));
+	opacity: 0;
+
+	transition: opacity var(--animation-duration), transform var(--animation-duration);
+}
+
+.backdrop.top .root {
+	--radius: 8px;
+	border-radius: 0 0 var(--radius) var(--radius);
+}

@@ -1,5 +1,6 @@
 import { WordsAPI } from '@/api/services/words-controller'
 import { Pagination, WordsTable } from '@/entities'
+import { Button } from '@/shared'
 import { updateWords } from '@/store/actions/words'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -49,13 +50,16 @@ export const Dictionary = () => {
 	return (
 		<article>
 			<h4>All words</h4>
-			<WordsTable
-				className={styles.table}
-				words={[...words]}
-				selectedWordsMap={selectedWordsMap}
-				whenWordDelete={deleteWordHandler}
-				whenWordSelect={selectWordHandler}
-			/>
+			<div className={styles.tableWrapper}>
+				<WordsTable
+					className={styles.table}
+					words={[...words]}
+					selectedWordsMap={selectedWordsMap}
+					whenWordDelete={deleteWordHandler}
+					whenWordSelect={selectWordHandler}
+				/>
+				{/* <Button>add word</Button> */}
+			</div>
 			<Pagination
 				className={styles.pagination}
 				page={page}

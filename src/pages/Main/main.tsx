@@ -8,6 +8,7 @@ import { Sidebar } from '@/entities/sidebar'
 import { AddWordForm } from '@/widgets/add-word-form'
 import { WordsAPI } from '@/api/services/words-controller'
 import { UserBadge } from '@/widgets/user-badge'
+import { Popup } from '@/entities/popup'
 
 export const Main = () => {
 	const [addWordSidebarIsShown, showAddWordSidebar] = useState(false);
@@ -22,22 +23,22 @@ export const Main = () => {
 					<Button
 						whenClick={() => showAddWordSidebar(true)}
 					>
-						Add word
+						add word
 					</Button>
 				</header>
 
 				<Dictionary />
 
-				<Sidebar
+				<Popup
 					show={addWordSidebarIsShown}
 					whenClose={() => showAddWordSidebar(false)}
-
+					position="top"
 					title="Add word"
 				>
 					<AddWordForm
 						whenAddWord={() => showAddWordSidebar(false)}
 					/>
-				</Sidebar>
+				</Popup>
 			</div>
 		</MainLayout>
 	)
