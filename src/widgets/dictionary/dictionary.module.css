@@ -1,7 +1,6 @@
 .table {
-	overflow: auto;
-
 	height: 600px;
+	overflow: auto;
 }
 
 .table::-webkit-scrollbar {

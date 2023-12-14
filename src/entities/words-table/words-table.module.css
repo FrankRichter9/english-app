@@ -4,9 +4,20 @@
 
 .row {
 	height: 40px;
+
+	--border-radius: 8px;
 }
+
 .row div {
 	transition: 0.3s;
+}
+
+.row div:first-child{
+	border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+
+.row div:last-child{
+	border-radius: 0 var(--border-radius) var(--border-radius) 0;
 }
 
 .row:hover div {
@@ -21,19 +32,26 @@
 	background-color: #537cf968;
 }
 
-.deleteCell {
-	transition: 0;
+.action {
 	opacity: 0;
+
+	transition: 0;
+
 	user-select: none;
 }
 
-.row:hover .deleteCell {
+.row:hover .action {
 	opacity: 1;
+
 	user-select: all;
 }
 
 .dataCell {
-	font-size: 12px;
-	
 	color: var(--gray);
+	font-size: 12px;
 }
+
+/* .actionsCell {
+	display: flex;
+	gap: 8px;
+} */

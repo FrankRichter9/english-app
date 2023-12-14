@@ -1,10 +1,12 @@
 .root {
-	box-sizing: border-box;
-	min-width: 60px;
-	min-height: 40px;
-	height: 40px;
-	padding: 4px 8px;
 
 	display: flex;
 	align-items: center;
+	box-sizing: border-box;
+	min-width: 60px;
+	height: 40px;
+	min-height: 40px;
+	padding: 4px 8px;
+
+	font-family: 'JetBrains Mono', sans-serif;
 }

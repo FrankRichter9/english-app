@@ -1,7 +1,8 @@
-import { Button, Table, TableCell } from '@/shared'
+import { Button, Checkbox, Table, TableCell } from '@/shared'
 import { Word } from '@/types'
 import styles from './history-table.module.css'
 import clsx from 'clsx'
+import { DeleteIcon } from '@/shared/delete-icon'
 
 type Props = {
 	words: Word[]
@@ -36,7 +37,7 @@ export const HistoryTable = ({ words }: Props) => {
 		return (
 			<div key={key} className={clsx(styles.contents, styles.row)}>
 				<TableCell>
-					<input type={'checkbox'} />
+					<Checkbox />
 				</TableCell>
 				<TableCell>{text}</TableCell>
 				<TableCell>{translate}</TableCell>
@@ -44,16 +45,7 @@ export const HistoryTable = ({ words }: Props) => {
 				<TableCell
 					className={styles.actionCell}
 				>
-					<Button
-						whenClick={() => null}
-					>
-						Save
-					</Button>
-					<Button
-						whenClick={() => null}
-					>
-						Delete
-					</Button>
+					<DeleteIcon />
 				</TableCell>
 			</div>
 		)

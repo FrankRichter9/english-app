@@ -7,3 +7,14 @@
 	display: flex;
 	gap: 8px;
 }
+
+.settingBlock {
+	display: flex;
+	align-items: center;
+
+	margin-top: 8px;
+}
+
+.settingText {
+	width: 200px;
+}

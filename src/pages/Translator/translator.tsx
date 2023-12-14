@@ -125,12 +125,6 @@ export const Translator = () => {
 							value={firstInputValue}
 							whenChange={changeInputTranslateHandler}
 						/>
-						<Button
-							className={styles.addButton}
-							whenClick={() => null}
-						>
-							Add word to dictionary
-						</Button>
 						{firstInputLang === 'en'
 							? renderEnSynonyms()
 							: renderRuSynonyms()}

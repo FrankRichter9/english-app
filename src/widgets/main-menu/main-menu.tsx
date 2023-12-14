@@ -67,17 +67,20 @@ export const MainMenu = ({ className }: Props) => {
 	}
 
 	return (
-		<article className={clsx(styles.root, className)}>
-			<Logo />
-			<NavMenu className={styles.menu} items={menuItemsArr} />
-			<NavMenu className={styles.subMenu} items={subMenuItemsArr} />
-			<NavMenu className={styles.subMenu} items={settingsMenuItemsArr} />
-			<div onClick={logoutHandler}>
-				<NavMenu
-					className={styles.loginMenu}
-					items={loginMenuItemsArr}
-				/>
-			</div>
-		</article>
+		<>
+			<article className={clsx(styles.root, className)}>
+				<Logo />
+				<NavMenu className={styles.menu} items={menuItemsArr} />
+				<NavMenu className={styles.subMenu} items={subMenuItemsArr} />
+				<NavMenu className={styles.subMenu} items={settingsMenuItemsArr} />
+				<div onClick={logoutHandler}>
+					<NavMenu
+						className={styles.loginMenu}
+						items={loginMenuItemsArr}
+					/>
+				</div>
+			</article>
+			<div className={styles.fix} />
+		</>
 	)
 }

@@ -4,6 +4,7 @@ import styles from './words-table.module.css'
 import { DeleteIcon } from '@/shared/delete-icon'
 import { format } from 'date-fns'
 import clsx from 'clsx'
+import { EditIcon } from '@/shared/edit-icon'
 
 type Props = {
 	words: Word[]
@@ -40,8 +41,8 @@ export const WordsTable = ({ words, selectedWordsMap = {}, className, whenWordDe
 			width: '100px',
 		},
 		...(whenWordDelete ? [{
-			title: 'deleteAction',
-			width: '30px',
+			title: 'Actions',
+			width: '1fr',
 		}] : []),
 	]
 
@@ -68,16 +69,17 @@ export const WordsTable = ({ words, selectedWordsMap = {}, className, whenWordDe
 				<TableCell className={styles.dataCell}>{created}</TableCell>
 				<TableCell className={styles.dataCell}>{update}</TableCell>
 				<TableCell>{rating}</TableCell>
-				{
-					whenWordDelete && (
-						<TableCell>
-							<DeleteIcon
-								className={styles.deleteCell}
-								onClick={() => whenWordDelete(id)}
-							/>
-						</TableCell>
-					)
-				}
+				<TableCell className={styles.actionsCell}>
+					<EditIcon
+						className={styles.action}
+					/>
+					{whenWordDelete && (
+						<DeleteIcon
+							className={styles.action}
+							onClick={() => whenWordDelete(id)}
+						/>
+					)}
+				</TableCell>
 			</div>
 		)
 	}

@@ -17,7 +17,7 @@ export const NavMenuItem = (props: Props) => {
 			to={link}
 		>
 			<div className={styles.title}>{title}</div>
-			{active && <div className={styles.activeChevron} />}
+			{/* {active && <div className={styles.activeChevron} />} */}
 		</Link>
 	)
 }
