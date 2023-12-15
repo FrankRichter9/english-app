@@ -1,8 +1,13 @@
-.root {
-}
-
 .form {
 	display: flex;
-	gap: 16px;
 	flex-direction: column;
+	gap: 16px;
+}
+
+.autoTranslateButton {
+	color: rgb(68 133 255);
+
+	cursor: pointer;
+
+	user-select: none;
 }

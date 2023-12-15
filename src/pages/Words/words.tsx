@@ -1,30 +1,57 @@
 import { MainLayout } from '@/layouts/main-layout'
-import { Input } from '@/shared'
-import { Dictionary } from '@/widgets'
-import React, { useEffect } from 'react'
+import { Button, Input } from '@/shared'
+import { Dictionary, EditWordForm } from '@/widgets'
+import React, { useEffect, useState } from 'react'
 import styles from './words.module.css'
-import { WordsAPI } from '@/api/services/words-controller'
+import { Popup } from '@/entities'
+import { AddWordForm } from '@/widgets/add-word-form'
+import { Word } from '@/types'
 
 export const Words = () => {
+	const [addWordSidebarIsShown, showAddWordSidebar] = useState(false);
+	const [editWord, setEditWord] = useState<Word | null>(null);
+
+	const editWordHandler = (word: Word) => {
+		setEditWord(word)
+	}
+
 	return (
 		<MainLayout>
 			<main className={styles.page}>
-				<h2>Words</h2>
-				<article className={styles.addWordBlock}>
-					<Input
-						className={styles.addInput}
-						value=""
-						whenChange={() => null}
-						placeholder="Введите слово чтобы добавить.."
+				<header className={styles.pageHeader}>
+					<h2 className={styles.title}>Words</h2>
+					<Button
+						whenClick={() => showAddWordSidebar(true)}
+					>
+						add word
+					</Button>
+				</header>
+
+				<Dictionary
+					whenWordEdit={editWordHandler}
+				/>
+
+				<Popup
+					show={addWordSidebarIsShown}
+					whenClose={() => showAddWordSidebar(false)}
+					position="top"
+					title="Add word"
+				>
+					<AddWordForm
+						whenAddWord={() => showAddWordSidebar(false)}
 					/>
-					<Input
-						className={styles.addInput}
-						value=""
-						whenChange={() => null}
-						placeholder="Введите перевод"
+				</Popup>
+				<Popup
+					show={Boolean(editWord)}
+					whenClose={() => setEditWord(null)}
+					position="top"
+					title="Edit word"
+				>
+					<EditWordForm
+						data={editWord}
+						whenEditWord={() => setEditWord(null)}
 					/>
-				</article>
-				<Dictionary />
+				</Popup>
 			</main>
 		</MainLayout>
 	)

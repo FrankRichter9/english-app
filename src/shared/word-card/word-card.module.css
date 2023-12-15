@@ -1,0 +1,18 @@
+.root {
+	display: flex;
+	gap: 8px;
+
+	font-size: 24px;
+
+	font-family: 'JetBrains Mono';
+}
+
+.skeleton {
+	height: 27.5px;
+
+	border-radius: 4px;
+}
+
+.root > div {
+	min-width: 150px;
+}

@@ -1,6 +1,6 @@
 export type Word = {
-	id: number
+	id?: number
 	word: string
 	translate: string
-	date: string
+	date?: string
 }

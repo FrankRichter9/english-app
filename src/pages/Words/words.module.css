@@ -11,3 +11,16 @@
 .addInput {
 	width: 400px;
 }
+
+.pageHeader {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.title {
+	margin: 0;
+
+	margin-bottom: 16px;
+	padding: 0;
+}

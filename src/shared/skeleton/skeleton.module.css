@@ -1,0 +1,24 @@
+.root {
+	width: 100px;
+	height: 30px;
+
+	background-color: #97979720;
+
+	border-radius: 8px;
+
+	animation: opacity 1.5s linear infinite;
+}
+
+@keyframes opacity {
+  0%, 40% {
+    opacity: 1;
+	}
+
+	70% {
+		opacity: .4;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}

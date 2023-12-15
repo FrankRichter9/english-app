@@ -7,6 +7,7 @@ import { AuthAPI } from '@/api/services/auth-controller'
 import { useDispatch } from 'react-redux'
 import { updateUser } from '@/store/actions/users'
 import clsx from 'clsx'
+import { UserBadge } from '../user-badge'
 
 type Props = {
 	className?: string
@@ -73,9 +74,11 @@ export const MainMenu = ({ className }: Props) => {
 				<NavMenu className={styles.menu} items={menuItemsArr} />
 				<NavMenu className={styles.subMenu} items={subMenuItemsArr} />
 				<NavMenu className={styles.subMenu} items={settingsMenuItemsArr} />
-				<div onClick={logoutHandler}>
+				<div className={styles.loginMenu} onClick={logoutHandler}>
+					{
+						location.pathname !== '/' && <UserBadge />
+					}
 					<NavMenu
-						className={styles.loginMenu}
 						items={loginMenuItemsArr}
 					/>
 				</div>

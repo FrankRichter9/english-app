@@ -2,64 +2,76 @@
 	--root-width: 600px;
 	--animation-duration: 450ms;
 
-	width: 100vw;
-	height: 100vh;
-
-	background-color: var(--backdrop-color);
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: var(--modal-backdrop-z-index);
 
 	display: flex;
 	justify-content: flex-end;
 
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	z-index: var(--modal-backdrop-z-index);
+	width: 100vw;
+	height: 100vh;
 
 	overflow: hidden;
+
+	background-color: var(--backdrop-color);
 }
 
 .root {
 	position: absolute;
 	top: 0;
 	right: 0;
+
 	width: var(--root-width);
 	height: 100vh;
+
 	background-color: var(--main-background-color);
 
-	box-shadow: -14px 0px 37px 20px rgba(34, 60, 80, 0.14);
+	box-shadow: -14px 0 37px 20px rgb(34 60 80 / 14%);
 }
 
 .animationEnter {
 	opacity: 0;
 }
+
 .animationEnterActive{
 	opacity: 1;
+
 	transition: opacity var(--animation-duration);
 }
+
 .animationExit {
   	opacity: 1;
 }
+
 .animationExitActive {
 	opacity: 0;
+
 	transition: opacity var(--animation-duration);
 }
 
 .animationEnter .root {
-	opacity: 0;
 	transform: translateX(var(--root-width));
+	opacity: 0;
 }
+
 .animationEnterActive .root {
-	opacity: 1;
 	transform: translateX(0);
+	opacity: 1;
+
 	transition: opacity var(--animation-duration), transform var(--animation-duration);
 }
+
 .animationExit .root {
   	opacity: 1;
 }
+
 .animationExitActive .root {
-	opacity: 0;
 	transform: translateX(var(--root-width));
+	opacity: 0;
+
 	transition: opacity var(--animation-duration), transform var(--animation-duration);
 }

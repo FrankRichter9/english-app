@@ -12,11 +12,11 @@
 
 .pageHeader {
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
+	justify-content: space-between;
 }
 
 .title {
-	padding: 0;
 	margin: 0;
+	padding: 0;
 }

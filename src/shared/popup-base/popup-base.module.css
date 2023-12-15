@@ -2,7 +2,7 @@
 	--root-width: 600px;
 	--animation-duration: 450ms;
 
-	position: absolute;
+	position: fixed;
 	top: 0;
 	right: 0;
 	bottom: 0;

@@ -14,6 +14,12 @@ export const WordsAPI = {
 		return DefaultnAPI.post(url, word)
 	},
 
+	patchWord(word: any): Promise<AxiosResponse<any>> {
+		const url = '/api/word'
+
+		return DefaultnAPI.patch(url, word)
+	},
+
 	/*
 	 * @param {string} login
 	 * @param {string} password
@@ -22,6 +28,12 @@ export const WordsAPI = {
 	 */
 	getWords(limit = 20, page = 1): Promise<AxiosResponse<any>> {
 		const url = `/api/words?limit=${limit}&page=${page}`
+
+		return DefaultnAPI.get(url)
+	},
+
+	getGenerateWords(): Promise<AxiosResponse<any>> {
+		const url = `/api/generateWords`
 
 		return DefaultnAPI.get(url)
 	},

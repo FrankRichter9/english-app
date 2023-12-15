@@ -2,39 +2,44 @@ import { MenuItem, NavMenu } from '@/entities'
 import { Button, Input, Logo } from '@/shared'
 import React, { useState } from 'react'
 import { useForm, Controller } from 'react-hook-form'
-import styles from './add-word-form.module.css'
+import styles from './edit-word-form.module.css'
 import { WordsAPI } from '@/api/services/words-controller'
 import { useDispatch } from 'react-redux'
 import { updateWords } from '@/store/actions/words'
+import { Word } from '@/types'
 import { useSearchParams } from 'react-router-dom'
 
 type Props = {
+	data: Word | null
 	className?: string
-	whenAddWord?: () => void
+	whenEditWord?: () => void
 }
 
-type AddWordForm = {
+type EditWordFormType = {
 	word: string
 	translate: string
 }
 
-export const AddWordForm = ({ className, whenAddWord }: Props) => {
+export const EditWordForm = ({ data, className, whenEditWord }: Props) => {
 	const dispatch = useDispatch()
 	const [searchParams, setSearchParams] = useSearchParams();
-	const { handleSubmit, control } = useForm<AddWordForm>({
+	const { handleSubmit, control } = useForm<EditWordFormType>({
 		defaultValues: {
-			word: '',
-			translate: '',
+			word: data?.word || '',
+			translate: data?.translate || '',
 		}
 	});
 
-	const onSubmit = async (data) => {
-		await WordsAPI.setWord(data)
+	const onSubmit = async (newData) => {
+		await WordsAPI.patchWord({
+			...data,
+			...newData
+		})
 		const page = searchParams.get('page') || 1
 		WordsAPI.getWords(15, +page).then((data) => {
 			dispatch(updateWords(data.data.words))
 		})
-		whenAddWord?.()
+		whenEditWord?.()
 	};
 
 	return (
@@ -64,14 +69,11 @@ export const AddWordForm = ({ className, whenAddWord }: Props) => {
 							value={field.value}
 							whenChange={field.onChange}
 							placeholder='Translate'
-							rightContent={(
-								<div className={styles.autoTranslateButton}>auto translate</div>
-							)}
 						/>
 					)}
 				/>
 				<Button>
-					Add word
+					Edit word
 				</Button>
 			</form>
 		</article >

@@ -9,8 +9,9 @@ body {
 }
 
 body[data-is-open-modal="true"] {
-	height: 100vh;
-	overflow: hidden;
+	/* height: 100vh;
+	overflow: hidden; */
+	overflow-y: hidden;
 }
 
 code {

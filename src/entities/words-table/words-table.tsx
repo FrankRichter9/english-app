@@ -10,11 +10,19 @@ type Props = {
 	words: Word[]
 	selectedWordsMap?: Record<number, boolean>
 	className?: string
-	whenWordDelete?: (id: number) => void
 	whenWordSelect?: (id: number) => void
+	whenWordDelete?: (id: number) => void
+	whenWordEdit?: (id: number) => void
 }
 
-export const WordsTable = ({ words, selectedWordsMap = {}, className, whenWordDelete, whenWordSelect }: Props) => {
+export const WordsTable = ({
+	words,
+	selectedWordsMap = {},
+	className,
+	whenWordDelete,
+	whenWordSelect,
+	whenWordEdit
+}: Props) => {
 	const config: TableColumn[] = [
 		{
 			title: 'checkbox',
@@ -70,9 +78,12 @@ export const WordsTable = ({ words, selectedWordsMap = {}, className, whenWordDe
 				<TableCell className={styles.dataCell}>{update}</TableCell>
 				<TableCell>{rating}</TableCell>
 				<TableCell className={styles.actionsCell}>
-					<EditIcon
-						className={styles.action}
-					/>
+					{whenWordEdit && (
+						<EditIcon
+							className={styles.action}
+							onClick={() => whenWordEdit(id)}
+						/>
+					)}
 					{whenWordDelete && (
 						<DeleteIcon
 							className={styles.action}
