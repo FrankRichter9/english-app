@@ -1,4 +1,4 @@
-import { useState, useRef, ChangeEvent, useEffect, ReactNode } from 'react'
+import { useState, useRef, ChangeEvent, useEffect, ReactNode, MouseEventHandler, DetailedHTMLProps, InputHTMLAttributes } from 'react'
 import clsx from 'clsx'
 
 import styles from './checkbox.module.css'
@@ -6,7 +6,7 @@ import styles from './checkbox.module.css'
 type Props = {
 	checked?: boolean
 	className?: string
-	whenClick?: () => void
+	whenClick?: (e?: MouseEvent) => void
 }
 
 export const Checkbox = ({ checked = false, className, whenClick }: Props) => {
@@ -28,6 +28,8 @@ export const Checkbox = ({ checked = false, className, whenClick }: Props) => {
 				className={styles.nativeCheckbox}
 				type="checkbox"
 				checked={checked}
+
+				//@ts-expect-error
 				onClick={whenClick}
 			/>
 		</label>

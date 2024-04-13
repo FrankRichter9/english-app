@@ -32,6 +32,26 @@
 	background-color: #537cf968;
 }
 
+.row.selected:has(+ .row.selected) div:first-child{
+	border-radius: var(--border-radius) 0 0 0;
+}
+
+.row.selected:has(+ .row.selected) div:last-child{
+	border-radius: 0 var(--border-radius) 0 0;
+}
+
+.row.selected + .row.selected div:first-child{
+	border-radius: 0 0 0 var(--border-radius);
+}
+
+.row.selected + .row.selected div:last-child{
+	border-radius: 0 0 var(--border-radius) 0;
+}
+
+.row.selected + .row.selected:has(+ .row.selected) div{
+	border-radius: 0;
+}
+
 .action {
 	opacity: 0;
 

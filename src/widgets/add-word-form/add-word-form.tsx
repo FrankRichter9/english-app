@@ -7,6 +7,7 @@ import { WordsAPI } from '@/api/services/words-controller'
 import { useDispatch } from 'react-redux'
 import { updateWords } from '@/store/actions/words'
 import { useSearchParams } from 'react-router-dom'
+import { TranslateAPI } from '@/api/services/translate-controller'
 
 type Props = {
 	className?: string
@@ -21,7 +22,7 @@ type AddWordForm = {
 export const AddWordForm = ({ className, whenAddWord }: Props) => {
 	const dispatch = useDispatch()
 	const [searchParams, setSearchParams] = useSearchParams();
-	const { handleSubmit, control } = useForm<AddWordForm>({
+	const { handleSubmit, control, setValue } = useForm<AddWordForm>({
 		defaultValues: {
 			word: '',
 			translate: '',
@@ -37,6 +38,40 @@ export const AddWordForm = ({ className, whenAddWord }: Props) => {
 		whenAddWord?.()
 	};
 
+	const [timeoutID, setTimeoutID] = useState(null)
+	const [autoTranslate, setAutoTranslate] = useState<string[]>([])
+	const changeInput = (value: string) => {
+		timeoutID && clearTimeout(timeoutID)
+		setTimeoutID(null)
+		const t = value.trim()
+			? setTimeout(() => {
+				TranslateAPI.translate(value, 'en')
+					.then(function (response) {
+						const text = response.data.translate
+						const translate = response.data.synonyms.ru.flat()
+						translate.unshift(text)
+
+						translate.slice(0, 5)
+
+						setAutoTranslate(translate)
+					})
+					.catch(function (error) {
+						console.log(error)
+					})
+					.finally(function () {
+						setTimeoutID(null)
+					})
+			}, 500)
+			: null
+		setTimeoutID(t)
+
+		// if (!value.trim()) {
+		// 	setSecondInputValue('')
+		// }
+
+		// setFirstInputValue(value)
+	}
+
 	return (
 		<article className={styles.root}>
 			<form
@@ -50,7 +85,10 @@ export const AddWordForm = ({ className, whenAddWord }: Props) => {
 					render={({ field }) => (
 						<Input
 							value={field.value}
-							whenChange={field.onChange}
+							whenChange={(v) => {
+								changeInput(v)
+								field.onChange(v)
+							}}
 							placeholder='Word'
 						/>
 					)}
@@ -64,12 +102,20 @@ export const AddWordForm = ({ className, whenAddWord }: Props) => {
 							value={field.value}
 							whenChange={field.onChange}
 							placeholder='Translate'
-							rightContent={(
-								<div className={styles.autoTranslateButton}>auto translate</div>
-							)}
+						// rightContent={(
+						// 	<div className={styles.autoTranslateButton}>auto translate</div>
+						// )}
 						/>
 					)}
 				/>
+				<div className={styles.autoTranslateBlock}>
+					<span>Auto translate:</span>
+					{
+						autoTranslate.map((word, i) => (
+							<span onClick={() => setValue('translate', word)}>{i === (autoTranslate.length - 1) ? word : `${word},`}</span>
+						))
+					}
+				</div>
 				<Button>
 					Add word
 				</Button>

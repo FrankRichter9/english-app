@@ -2,7 +2,7 @@
 import axios from 'axios'
 import { AuthAPI } from './services/auth-controller'
 
-const baseURL = 'http://localhost:5000/'
+const baseURL = 'http://http://91.107.124.190:5000/'
 // process.env.BASE_URL
 export const TOKEN_LOCALSTORAGE_KEY = 'token'
 
@@ -34,15 +34,15 @@ DefaultnAPI.interceptors.request.use(config => {
 })
 
 DefaultnAPI.interceptors.response.use(response => {
-	
+
 
 	return response
 }, async (error) => {
 	const originalRequest = error.config
 
-	if(error?.response?.status === 401) {
+	if (error?.response?.status === 401) {
 		const data = await AuthAPI.refresh()
-		
+
 		localStorage.setItem(TOKEN_LOCALSTORAGE_KEY, data.data.accessToken)
 
 		DefaultnAPI.request(originalRequest)

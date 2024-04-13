@@ -66,10 +66,15 @@ export const WordsTable = ({
 
 		return (
 			<div key={key} className={clsx(styles.contents, styles.row, selected && styles.selected)}>
-				<TableCell>
+				<TableCell
+				// whenClick={() => whenWordSelect(id)}
+				>
 					<Checkbox
 						checked={selected}
-						whenClick={() => whenWordSelect(id)}
+						whenClick={(e) => {
+							e.stopPropagation()
+							whenWordSelect(id)
+						}}
 					/>
 				</TableCell>
 				<TableCell>{text}</TableCell>

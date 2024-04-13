@@ -303,6 +303,11 @@ module.exports = function (webpackEnv) {
 		},
 		resolve: {
 			preferAbsolute: true,
+			fallback: {
+				"fs": false,
+				"path": false,
+				"os": false
+			},
 			modules: [path.resolve(__dirname, '..', 'src'), 'node_modules'],
 			mainFiles: ['index'],
 			// This allows you to set a fallback for where webpack should look for modules.

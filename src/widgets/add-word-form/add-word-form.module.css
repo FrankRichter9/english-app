@@ -11,3 +11,16 @@
 
 	user-select: none;
 }
+
+.autoTranslateBlock {
+	display: flex;
+	gap: 4px;
+
+	color: var(--gray);
+}
+
+.autoTranslateBlock span:not(:first-child):hover {
+	text-decoration: underline;
+
+	cursor: pointer;
+}
